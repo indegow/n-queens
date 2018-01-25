@@ -85,17 +85,19 @@ window.countNQueensSolutions = function(n) {
   var board = new Board({n: n});
   
   for (var k = 0; k < n; k++) {
-  
-    var count = 0;  
-
+    var count = 0;
     for (var i = 0; i < n; i++) {
       for (var j = 0; j < n; j++) {
         if (count === 0 && !board.findPiece(i, j)) {
           board.togglePiece(i, j);
-          count++; 
-          if (board.hasAnyQueenConflicts()) {
+          count++;
+          if (board.hasAnyQueensConflicts()) { 
+            board.togglePiece(i, j); 
+            count--;
+          }
+          if (board.howManyPieces() === n) {
+            solutionCount++;
             board.togglePiece(i, j);
-            count--; 
           }
         }
       }

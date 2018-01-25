@@ -26,6 +26,16 @@
 
     findPiece: function(rowIndex, colIndex) {
       return this.rows()[rowIndex][colIndex];
+    },
+
+    howManyPieces: function() {
+      var count = 0;
+      for (var i = 0; i < this.rows().length; i++) {
+        for (var j = 0; j < this.rows().length; j++) {
+          if (this.rows()[i][j]) count++;
+        }
+      }
+      return count;
     },    
 
     togglePiece: function(rowIndex, colIndex) {
@@ -156,7 +166,7 @@
     hasAnyMajorDiagonalConflicts: function() {
       var n = this.rows().length;
       var check = false;
-      for (var i = -n + 2; i < n - 2; i++) {
+      for (var i = -n; i < n; i++) {
         if (this.hasMajorDiagonalConflictAt(i)) check = true;
       }
       return check; // fixme
