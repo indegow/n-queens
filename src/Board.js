@@ -24,6 +24,10 @@
       }, this);
     },
 
+    findPiece: function(rowIndex, colIndex) {
+      return this.rows()[rowIndex][colIndex];
+    },    
+
     togglePiece: function(rowIndex, colIndex) {
       this.get(rowIndex)[colIndex] = + !this.get(rowIndex)[colIndex];
       this.trigger('change');
